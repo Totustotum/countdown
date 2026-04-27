@@ -26,8 +26,7 @@ function updateDisplay(minutes, seconds) {
 function openFigjam() {
   if (hasOpenedDestination) return;
   hasOpenedDestination = true;
-  const popup = window.open(FIGJAM_URL, "_blank");
-  if (!popup) window.location.assign(FIGJAM_URL);
+  window.location.assign(FIGJAM_URL);
 }
 
 function setStatus(now, remainingSec) {
@@ -39,7 +38,7 @@ function setStatus(now, remainingSec) {
     statusEl.textContent = "";
     return;
   }
-  statusEl.textContent = "Liftoff complete. Opening FigJam.";
+  statusEl.textContent = "";
 }
 
 function tick() {
