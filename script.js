@@ -1,5 +1,4 @@
-const FIGJAM_URL =
-  "https://www.figma.com/proto/Slrixzgh8e5FZ21wR7fjaq/GD-202-001_Spring-2026?node-id=4384-9345&viewport=5984%2C2191%2C0.16&t=aKxeqRcLqoTZQoqM-1&scaling=contain&content-scaling=fixed&starting-point-node-id=4347%3A13&page-id=1%3A28547";
+const FIGJAM_URL = "https://totustotum.github.io/attendance-app/instructor.html";
 
 const START_TIME = new Date("2026-04-28T13:15:00");
 const END_TIME   = new Date("2026-04-28T13:30:00");
