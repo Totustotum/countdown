@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Launch Countdown</title>
+    <link href="https://unpkg.com/@pqina/flip/dist/flip.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="countdown-shell" aria-live="polite" aria-atomic="true">
+        <div class="clock-row">
+
+          <div class="digit-group">
+            <p class="digit-label">MINUTES</p>
+            <!--
+              data-transform="split" splits the string value ("05") into ["0","5"].
+              data-value-mapping="indexes" assigns index 0 → first flip span, 1 → second.
+              data-repeat="true" creates one flip span per item in the split array.
+            -->
+            <div class="tick" id="tick-min"
+                 data-value="15"
+                 data-did-init="initMinTick">
+              <div data-repeat="true"
+                   data-value-mapping="indexes"
+                   data-layout="horizontal fit"
+                   data-transform="split -> delay(rtl, 40, 80)"
+                   aria-hidden="true">
+                <span data-view="flip"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="separator" aria-hidden="true">
+            <span class="colon-dot"></span>
+            <span class="colon-dot"></span>
+          </div>
+
+          <div class="digit-group">
+            <p class="digit-label">SECONDS</p>
+            <div class="tick" id="tick-sec"
+                 data-value="00"
+                 data-did-init="initSecTick">
+              <div data-repeat="true"
+                   data-value-mapping="indexes"
+                   data-layout="horizontal fit"
+                   data-transform="split -> delay(rtl, 40, 80)"
+                   aria-hidden="true">
+                <span data-view="flip"></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <p class="status" id="status"></p>
+    </main>
+
+    <script src="https://unpkg.com/@pqina/flip/dist/flip.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

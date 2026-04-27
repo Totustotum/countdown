@@ -1,0 +1,140 @@
+:root {
+  color-scheme: dark;
+  --text: #f0f2f6;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(ellipse at 50% 40%, #141924 0%, #080a0e 70%);
+  font-family: "Arial Black", Impact, "Segoe UI", sans-serif;
+  color: var(--text);
+}
+
+.page { width: min(92vw, 800px); }
+
+/* ── Layout ── */
+.clock-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.digit-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.digit-label {
+  font-size: clamp(1rem, 2.2vw, 1.4rem);
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-align: center;
+  color: var(--text);
+}
+
+.separator {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* push down to align with the vertical center of the flip panels */
+  margin-top: 2.4em;
+}
+
+.colon-dot {
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 2px;
+}
+
+/* ── Status ── */
+.status {
+  margin-top: 32px;
+  text-align: center;
+  font: 400 1rem/1.4 "Segoe UI", sans-serif;
+  letter-spacing: 0.2px;
+  color: #7a8090;
+}
+
+/* ════════════════════════════════════════════
+   Tick / Flip library — dark-theme overrides
+   ════════════════════════════════════════════ */
+
+/* Base font size on the .tick container scales every em-based
+   dimension inside the library (char width, panel height, etc.) */
+.tick {
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+/* Each individual flip card */
+.tick-flip,
+.tick-text-inline {
+  font-size: clamp(70px, 12vw, 100px) !important;
+}
+
+/* Character cell width (library default is 1.5em) */
+.tick-char {
+  width: 1.5em !important;
+}
+
+/* Outer flip card: shape + shadow */
+.tick-flip {
+  font-family: "Arial Black", Impact, "Segoe UI", sans-serif !important;
+  border-radius: 10px !important;
+  border: none !important;
+  position: relative !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Top stroke: 1 px line, #3A3A3A solid at centre fading to transparent
+   at both sides. Lives on the panel so it rotates with the flip. */
+.tick-flip-front::before,
+.tick-flip-panel-front::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent 0%, #3A3A3A 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* All four panel halves — shared background + text */
+.tick-flip-panel {
+  background-color: #181e28 !important;
+  color: #f0f2f6 !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Top half slightly lighter */
+.tick-flip-panel-face-top,
+.tick-flip-panel-back-top {
+  background: linear-gradient(180deg, #1e2330 0%, #181e28 100%) !important;
+}
+
+/* Bottom half slightly darker */
+.tick-flip-panel-face-bottom,
+.tick-flip-panel-back-bottom {
+  background: linear-gradient(180deg, #141820 0%, #0e1118 100%) !important;
+}
+
+/* Line-height tuning for vertical digit centering */
+.tick-flip-panel-text-wrapper {
+  line-height: 1.45 !important;
+}
+
+
+/* Hide the library's attribution link that renders in the corner */
+.tick-credits {
+  display: none !important;
+}
