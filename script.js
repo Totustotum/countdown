@@ -1,5 +1,5 @@
 const FIGJAM_URL =
-  "https://www.figma.com/board/1eYF85itScr19igQmpvTk3/GD-202--Omni-Channel-Experience-UX---UI-Final-Project?node-id=0-1&t=veaBHRrScm5HD7HH-1";
+  "https://www.figma.com/proto/Slrixzgh8e5FZ21wR7fjaq/GD-202-001_Spring-2026?node-id=4384-9345&viewport=5984%2C2191%2C0.16&t=aKxeqRcLqoTZQoqM-1&scaling=contain&content-scaling=fixed&starting-point-node-id=4347%3A13&page-id=1%3A28547";
 
 const START_TIME = new Date("2026-04-28T13:15:00");
 const END_TIME   = new Date("2026-04-28T13:30:00");
