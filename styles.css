@@ -1,0 +1,169 @@
+:root {
+  color-scheme: dark;
+  --bg: #0c0f14;
+  --panel: #141922;
+  --digit-bg-top: #2a2f39;
+  --digit-bg-bottom: #191d25;
+  --edge: #090b0f;
+  --text: #f5f7fb;
+  --accent: #7cff7c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top, #1b2331, var(--bg) 55%);
+  font-family: "Arial Black", "Impact", "Segoe UI", sans-serif;
+  color: var(--text);
+}
+
+.page {
+  width: min(92vw, 740px);
+}
+
+.countdown-shell {
+  background: linear-gradient(180deg, #121720 0%, #0b0f16 100%);
+  border: 3px solid #2a3344;
+  border-radius: 10px;
+  padding: 18px 20px 24px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+}
+
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  width: min(100%, 520px);
+  margin: 0 auto 12px;
+  font-size: clamp(0.72rem, 1.8vw, 0.95rem);
+  letter-spacing: 1.2px;
+  opacity: 0.9;
+}
+
+.clock-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+.digit-pair {
+  display: flex;
+  gap: 10px;
+}
+
+.separator {
+  font-size: clamp(2.3rem, 8.2vw, 4.3rem);
+  line-height: 1;
+  transform: translateY(-4px);
+}
+
+.flip-digit {
+  position: relative;
+  width: clamp(64px, 13vw, 100px);
+  height: clamp(84px, 18vw, 130px);
+  perspective: 320px;
+  border-radius: 7px;
+  border: 1px solid #313a4b;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 2px var(--edge), 0 6px 12px rgba(0, 0, 0, 0.5);
+}
+
+.flip-digit::before,
+.flip-digit::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(2.4rem, 8vw, 4.5rem);
+  font-weight: 900;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.flip-digit::before {
+  top: 0;
+  background: linear-gradient(180deg, #3a424f, var(--digit-bg-top));
+  border-bottom: 1px solid #070a0f;
+}
+
+.flip-digit::after {
+  bottom: 0;
+  background: linear-gradient(180deg, var(--digit-bg-bottom), #11151d);
+  border-top: 1px solid #3b4454;
+}
+
+.flip-digit .top,
+.flip-digit .bottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(2.4rem, 8vw, 4.5rem);
+  font-weight: 900;
+  color: var(--text);
+  z-index: 2;
+  backface-visibility: hidden;
+}
+
+.flip-digit .top {
+  top: 0;
+  transform-origin: bottom;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(0, 0, 0, 0.25));
+}
+
+.flip-digit .bottom {
+  bottom: 0;
+  transform-origin: top;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.45));
+}
+
+.flip-digit.flipping .top {
+  animation: flap-top 320ms ease-in forwards;
+}
+
+.flip-digit.flipping .bottom {
+  animation: flap-bottom 320ms ease-out forwards;
+}
+
+@keyframes flap-top {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(-95deg);
+  }
+}
+
+@keyframes flap-bottom {
+  0% {
+    transform: rotateX(95deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+.status {
+  margin: 14px 4px 0;
+  text-align: center;
+  font: 600 0.95rem/1.4 "Segoe UI", sans-serif;
+  letter-spacing: 0.3px;
+  color: #d8dde8;
+}
+
+.status.hot {
+  color: var(--accent);
+  text-shadow: 0 0 9px rgba(124, 255, 124, 0.35);
+}

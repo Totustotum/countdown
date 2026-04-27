@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Launch Countdown</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="countdown-shell" aria-live="polite" aria-atomic="true">
+        <div class="label-row">
+          <span>MINUTES</span>
+          <span>SECONDS</span>
+        </div>
+
+        <div class="clock-row">
+          <div class="digit-pair">
+            <div class="flip-digit" data-part="minutes-tens">
+              <span class="top">0</span>
+              <span class="bottom">0</span>
+            </div>
+            <div class="flip-digit" data-part="minutes-ones">
+              <span class="top">0</span>
+              <span class="bottom">0</span>
+            </div>
+          </div>
+
+          <div class="separator" aria-hidden="true">:</div>
+
+          <div class="digit-pair">
+            <div class="flip-digit" data-part="seconds-tens">
+              <span class="top">0</span>
+              <span class="bottom">0</span>
+            </div>
+            <div class="flip-digit" data-part="seconds-ones">
+              <span class="top">0</span>
+              <span class="bottom">0</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <p class="status" id="status"></p>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
